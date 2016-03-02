@@ -1,4 +1,4 @@
-package hibernate;
+package hibernateDao;
 
 import org.hibernate.Session;
 
@@ -14,7 +14,7 @@ import entityImpl.CommentImpl;
 
 public class AddBug {
 
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 		
 //		Comment comm = getCommentActionServiceImpl().createComment("text of comment");
 //		//create comment after creating the bug
@@ -62,6 +62,6 @@ public class AddBug {
 //			}
 //		};
 //
-	}
+//	}
 
 }
