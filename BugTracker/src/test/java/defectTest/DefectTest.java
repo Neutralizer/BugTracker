@@ -1,20 +1,10 @@
 package defectTest;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.junit.Test;
 
-import entityAPI.Comment;
-import entityAPI.CommentActionService;
-import entityAPI.Defect;
-import entityAPI.DefectActionService;
-import entityAPI.DefectRequestDataBuilder;
-import entityAPI.UserService;
-import entityImpl.DefectRequestDataBuilderImpl;
-import entityAPI.DefectRequestData;
+import model.defect.DefectRequestDataBuilder;
+import model.defect.DefectRequestDataBuilderImpl;
+
 
 public class DefectTest {
 

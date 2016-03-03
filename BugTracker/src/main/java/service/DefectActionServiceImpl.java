@@ -1,0 +1,71 @@
+package service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import dao.DefectDao;
+import model.comment.Comment;
+import model.defect.Defect;
+import model.defect.DefectBuilder;
+import model.defect.DefectBuilderImpl;
+import model.defect.DefectRequestData;
+
+/**
+ * creates a new comment and edits it
+ * 
+ * @author Tsetso
+ *
+ */
+
+public class DefectActionServiceImpl implements DefectActionService {
+
+	protected DefectBuilder getDefectBuilder() {
+		return new DefectBuilderImpl();
+	}
+	
+	@Autowired
+	DefectDao dao;
+	
+	public Defect createDefect(DefectRequestData defectRequestData) {
+		Defect defect = getDefectBuilder()
+				.severity(defectRequestData.getSeverity())
+				.title(defectRequestData.getTitle())
+				.description(defectRequestData.getDescription())
+				.author(defectRequestData.getAuthor())
+				.assignedTo(defectRequestData.getAssignedTo())
+				.status(defectRequestData.getStatus())
+				.build();
+		
+			dao.addDefect(defect);
+		return defect;
+
+	}
+
+	public Defect edit(DefectRequestData defectRequestData, Defect defect) {
+//		Comment comm = new CommentImpl(comment, text);
+		Defect newDefect = getDefectBuilder()
+				.severity(defectRequestData.getSeverity())
+				.title(defectRequestData.getTitle())
+				.description(defectRequestData.getDescription())
+				.author(defectRequestData.getAuthor())
+				.assignedTo(defectRequestData.getAssignedTo())
+				.status(defectRequestData.getStatus())
+				.build(defect);
+		
+			dao.update(newDefect);
+		return newDefect;
+
+	}
+
+	public Defect addComment(Defect defect, Comment comment) {
+		Defect newDefect = getDefectBuilder()
+				.comment(comment)
+				.build(defect);
+		dao.update(newDefect);
+		return newDefect;
+	}
+	
+//	public Defect editComment(Defect defect, Comment editedComment, ){
+//		
+//	}
+
+}

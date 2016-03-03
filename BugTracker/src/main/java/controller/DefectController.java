@@ -6,14 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import entityAPI.Comment;
-import entityAPI.CommentActionService;
-import entityAPI.Defect;
-import entityAPI.DefectActionService;
-import entityAPI.DefectRequestData;
-import entityAPI.DefectRequestDataBuilder;
-import entityAPI.Severity;
-import entityImpl.DefectRequestDataBuilderImpl;
+import model.Severity;
+import model.defect.Defect;
+import model.defect.DefectRequestData;
+import model.defect.DefectRequestDataBuilder;
+import model.defect.DefectRequestDataBuilderImpl;
+import service.CommentActionService;
+import service.DefectActionService;
 
 @Controller
 public class DefectController {
