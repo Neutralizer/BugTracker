@@ -1,4 +1,4 @@
-package dao;
+package dao.defect;
 
 import java.util.Collection;
 

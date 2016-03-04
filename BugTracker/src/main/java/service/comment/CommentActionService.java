@@ -1,4 +1,4 @@
-package service;
+package service.comment;
 
 import java.util.Date;
 

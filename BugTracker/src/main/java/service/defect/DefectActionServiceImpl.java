@@ -1,8 +1,8 @@
-package service;
+package service.defect;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import dao.DefectDao;
+import dao.defect.DefectDao;
 import model.comment.Comment;
 import model.defect.Defect;
 import model.defect.DefectBuilder;
@@ -23,7 +23,7 @@ public class DefectActionServiceImpl implements DefectActionService {
 	}
 	
 	@Autowired
-	DefectDao dao;
+	DefectDao defectDao;
 	
 	public Defect createDefect(DefectRequestData defectRequestData) {
 		Defect defect = getDefectBuilder()
@@ -35,7 +35,7 @@ public class DefectActionServiceImpl implements DefectActionService {
 				.status(defectRequestData.getStatus())
 				.build();
 		
-			dao.addDefect(defect);
+		defectDao.addDefect(defect);
 		return defect;
 
 	}
@@ -51,7 +51,7 @@ public class DefectActionServiceImpl implements DefectActionService {
 				.status(defectRequestData.getStatus())
 				.build(defect);
 		
-			dao.update(newDefect);
+		defectDao.update(newDefect);
 		return newDefect;
 
 	}
@@ -60,7 +60,7 @@ public class DefectActionServiceImpl implements DefectActionService {
 		Defect newDefect = getDefectBuilder()
 				.comment(comment)
 				.build(defect);
-		dao.update(newDefect);
+		defectDao.update(newDefect);
 		return newDefect;
 	}
 	

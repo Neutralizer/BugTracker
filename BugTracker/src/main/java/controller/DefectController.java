@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import model.Severity;
 import model.defect.Defect;
 import model.defect.DefectRequestData;
 import model.defect.DefectRequestDataBuilder;
 import model.defect.DefectRequestDataBuilderImpl;
-import service.CommentActionService;
-import service.DefectActionService;
+import model.defect.Severity;
+import service.comment.CommentActionService;
+import service.defect.DefectActionService;
 
 @Controller
 public class DefectController {
@@ -43,6 +43,8 @@ public class DefectController {
 		 return defect;
 
 	}
+	
+	
 
 	private DefectRequestDataBuilder getDefectRequestDataBuilderImpl() {
 		return new DefectRequestDataBuilderImpl();

@@ -6,16 +6,16 @@ import java.util.Collection;
 
 import org.junit.Test;
 
-import dao.DefectDao;
-import dao.DefectDaoImpl;
+import dao.defect.DefectDao;
+import dao.defect.DefectDaoImpl;
 import model.comment.Comment;
 import model.comment.CommentImpl;
 import model.defect.Defect;
 import model.defect.DefectRequestData;
 import model.defect.DefectRequestDataBuilder;
 import model.defect.DefectRequestDataBuilderImpl;
-import service.DefectActionService;
-import service.DefectActionServiceImpl;
+import service.defect.DefectActionService;
+import service.defect.DefectActionServiceImpl;
 
 public class TestDBDefect {
 

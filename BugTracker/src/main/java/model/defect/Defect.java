@@ -3,8 +3,6 @@ package model.defect;
 import java.util.Collection;
 import java.util.Date;
 
-import model.Severity;
-import model.Status;
 import model.comment.Comment;
 
 public interface Defect {

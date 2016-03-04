@@ -1,12 +1,13 @@
-package service;
+package service.comment;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.DefectDao;
+import dao.defect.DefectDao;
 import model.comment.Comment;
 import model.comment.CommentImpl;
+import service.user.UserService;
 
 /**
  * creates a new comment and edits it

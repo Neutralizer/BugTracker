@@ -1,4 +1,4 @@
-package model;
+package model.defect;
 
 
 public enum Status {

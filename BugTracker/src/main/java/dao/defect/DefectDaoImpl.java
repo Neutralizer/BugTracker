@@ -1,4 +1,4 @@
-package dao;
+package dao.defect;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
+import dao.HibernateSessionManager;
 import model.defect.Defect;
 import model.defect.DefectBuilder;
 import model.defect.DefectBuilderImpl;
@@ -63,7 +64,7 @@ public class DefectDaoImpl implements DefectDao{
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
-			Defect defect = session.get(Defect.class, id);
+			Defect defect = session.get(DefectImpl.class, id);
 			session.delete(defect);
 			session.getTransaction().commit();
 		} catch (HibernateException e) {

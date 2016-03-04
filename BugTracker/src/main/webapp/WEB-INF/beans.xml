@@ -1,0 +1,13 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="defectActionService" class="service.defect.DefectActionServiceImpl" />
+	<bean id="commentActionService" class="service.comment.CommentActionServiceImpl" />
+	<bean id="userService" class="service.user.UserServiceImpl" />
+	<bean id="defectDao" class="dao.defect.DefectDaoImpl"/>
+	<bean id="userDao" class="dao.user.UserDaoImpl" />
+
+</beans>

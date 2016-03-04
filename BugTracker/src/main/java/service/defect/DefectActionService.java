@@ -1,4 +1,4 @@
-package service;
+package service.defect;
 
 import model.comment.Comment;
 import model.defect.Defect;

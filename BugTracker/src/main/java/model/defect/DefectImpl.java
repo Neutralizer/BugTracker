@@ -13,8 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import model.Severity;
-import model.Status;
 import model.comment.Comment;
 import model.comment.CommentImpl;
 
