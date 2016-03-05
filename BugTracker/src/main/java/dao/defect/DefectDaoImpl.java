@@ -3,8 +3,11 @@ package dao.defect;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import dao.HibernateSessionManager;
 import model.defect.Defect;
@@ -45,7 +48,7 @@ public class DefectDaoImpl implements DefectDao{
 		}
 	}
 	
-	public Collection<Defect> getAllDefects(Defect defect){
+	public Collection<Defect> findAllDefects(){
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
@@ -59,6 +62,24 @@ public class DefectDaoImpl implements DefectDao{
 		}
 		return new ArrayList<Defect>();
 	}
+	
+//	public Collection<Defect> findList() {
+//		Session session = HibernateSessionManager.getSessionFactory().openSession();
+//		try{
+//			session.beginTransaction();
+////			Collection<Defect> defects = session.createCriteria(DefectImpl.class).list();
+//			
+//			Query query = session.createQuery("SELECT title, severity, status FROM Defect");
+//			ArrayList<Defect> result = (ArrayList<Defect>) query.list();
+//			session.getTransaction().commit();
+//			return result;
+//		} catch (HibernateException e) {
+//			session.getTransaction().rollback();
+//		} finally {
+//			session.close();
+//		}
+//		return new ArrayList<Defect>();
+//	}
 	
 	public void deleteDefect(int id){
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
@@ -89,6 +110,8 @@ public class DefectDaoImpl implements DefectDao{
 		}
 		return null;
 	}
+
+	
 	
 	
 	

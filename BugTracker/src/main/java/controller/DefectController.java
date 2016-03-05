@@ -1,7 +1,11 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,6 +15,7 @@ import model.defect.DefectRequestData;
 import model.defect.DefectRequestDataBuilder;
 import model.defect.DefectRequestDataBuilderImpl;
 import model.defect.Severity;
+import model.defect.Status;
 import service.comment.CommentActionService;
 import service.defect.DefectActionService;
 
@@ -23,13 +28,14 @@ public class DefectController {
 	@Autowired
 	CommentActionService commentActionService;
 
-	@RequestMapping(value = "/defect", method = RequestMethod.GET)
+	@RequestMapping(value = "/defectT", method = RequestMethod.GET)
 	public @ResponseBody Defect getDefect() {
 		DefectRequestData request = getDefectRequestDataBuilderImpl()
 				.title("Test defect")
 				.author("b.nikolov")
 				.description("test defect description")
 				.severity(Severity.MAJOR.toString())
+				.status(Status.NEW.toString())
 				.build();
 		
 		 Defect defect = defectActionService.createDefect(request);
@@ -42,6 +48,15 @@ public class DefectController {
 		
 		 return defect;
 
+	}
+	
+	@RequestMapping(value = "/defect", method = RequestMethod.GET)
+	public String currencies(Model model) {
+		
+		Collection<Defect> list = defectActionService.getAll();
+		
+		model.addAttribute("issueList", list);
+		return "list";
 	}
 	
 	

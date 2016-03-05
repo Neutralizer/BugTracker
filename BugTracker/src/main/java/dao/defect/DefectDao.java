@@ -10,7 +10,9 @@ public interface DefectDao {
 	
 	void update(Defect defect);
 	
-	Collection<Defect> getAllDefects(Defect defect);
+	Collection<Defect> findAllDefects();
+	
+//	Collection<Defect> findList();
 	
 	Defect getDefect(int id);
 	

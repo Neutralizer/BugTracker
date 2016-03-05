@@ -62,5 +62,24 @@ public class TestDBDefect {
 		
 		assertEquals(2, coll.size());
 	}
+	
+	
+	@Test
+	public void getList() {
+		Collection<Defect> coll = defectService.getAll();
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

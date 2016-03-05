@@ -1,5 +1,7 @@
 package service.defect;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import dao.defect.DefectDao;
@@ -35,7 +37,7 @@ public class DefectActionServiceImpl implements DefectActionService {
 				.status(defectRequestData.getStatus())
 				.build();
 		
-		defectDao.addDefect(defect);
+//		defectDao.addDefect(defect);
 		return defect;
 
 	}
@@ -63,6 +65,13 @@ public class DefectActionServiceImpl implements DefectActionService {
 		defectDao.update(newDefect);
 		return newDefect;
 	}
+
+	public Collection<Defect> getAll() {
+		
+		Collection<Defect> list = defectDao.findAllDefects();
+		return list;
+	}
+	
 	
 //	public Defect editComment(Defect defect, Comment editedComment, ){
 //		

@@ -1,5 +1,7 @@
 package service.defect;
 
+import java.util.Collection;
+
 import model.comment.Comment;
 import model.defect.Defect;
 import model.defect.DefectRequestData;
@@ -30,4 +32,14 @@ public interface DefectActionService {
 	 * @returns a new defect with changes
 	 */
 	Defect edit(DefectRequestData defectRequestData, Defect defect);
+	
+	
+	/**
+	 * 
+	 * @returns list of all defects with parameters - title, severity, status
+	 */
+	Collection<Defect> getAll();
+	
+	
+	
 }
