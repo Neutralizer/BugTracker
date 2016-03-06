@@ -65,13 +65,13 @@ public class DefectBuilderImpl implements DefectBuilder {
 
 		DefectImpl defect = new DefectImpl();
 		defect.id = this.id;
-		defect.severity = this.severity;
 		defect.title = this.title;
 		defect.description = this.description;
 		defect.author = this.author;
 		defect.dateCreated = new Date();
 		defect.assignedTo = this.assignedTo;
-		defect.status = this.status;
+		defect.severity = this.severity;
+		defect.status = Status.NEW;
 		defect.lastChangedDate = new Date();
 //		defect.comments.add(this.comment);
 

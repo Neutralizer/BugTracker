@@ -1,25 +1,98 @@
 package model.defect;
 
-import model.Builder;
+import java.util.Date;
 
-public interface DefectRequestData extends Builder {
+public class DefectRequestData {
 
-	String getSeverity();
+	private int id;
+	private String title;
+	private String description;
+	private String author;
+	private String dateCreated;
+	private String assignedTo;
+	private String severity;
+	private String status;
+	private String lastChangedDate;
+	private String comments;
 
-	String getTitle();
+	public int getId() {
+		return id;
+	}
 
-	String getDescription();
+	public void setId(int id) {
+		this.id = id;
+	}
 
-	String getAuthor();
+	public String getTitle() {
+		return title;
+	}
 
-	String getDateCreated();
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-	String getAssignedTo();
+	public String getDescription() {
+		return description;
+	}
 
-	String getStatus();
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-	String getLastChangedDate();
+	public String getAuthor() {
+		return author;
+	}
 
-	String getComments();
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(String dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public String getAssignedTo() {
+		return assignedTo;
+	}
+
+	public void setAssignedTo(String assignedTo) {
+		this.assignedTo = assignedTo;
+	}
+
+	public String getSeverity() {
+		return severity;
+	}
+
+	public void setSeverity(String severity) {
+		this.severity = severity;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getLastChangedDate() {
+		return lastChangedDate;
+	}
+
+	public void setLastChangedDate(String lastChangedDate) {
+		this.lastChangedDate = lastChangedDate;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 
 }

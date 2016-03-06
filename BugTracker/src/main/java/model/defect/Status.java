@@ -13,7 +13,12 @@ public enum Status {
 	/**
 	 * Defect is fixed;
 	 */
-	FIXED,
+	CONFIRMED_AS_FIXED,
+	
+	/**
+	 * Defect was not successfully fixed;
+	 */
+	REOPENED, 
 	/**
 	 * Defect will not be fixed;
 	 */

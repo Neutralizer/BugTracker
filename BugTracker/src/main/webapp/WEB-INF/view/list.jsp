@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h3>Issue List</h3>
+				<h3>Defect List</h3>
 			</div>
 		</div>
 		<form:form action="/list" method="POST">
@@ -30,21 +30,25 @@
 				<table class="table" id="table">
 					<thead>
 						<tr>
+							<th>Id</th>
 							<th>Title</th>
 							<th>Severity</th>
 							<th>Status</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${issueList}" var="defect">
+						<c:forEach items="${defectList}" var="defect">
 							<tr>
+								<td>${defect.id}</td>
 								<td>${defect.title}</td>
 								<td>${defect.severity}</td>
 								<td>${defect.status}</td>
 								<td>
 <%-- 								<sec:authorize access="hasRole('ADMIN')"> --%>
-<!-- 									<button class="btn btn-primary" -->
-<%-- 										onclick="location.href='/currency/edit?id=${currency.id}'">Edit</button> --%>
+									<button class="btn btn-primary"
+										onclick="location.href='/defect/view?id=${defect.id}'">View</button>
+									<button class="btn btn-primary"
+										onclick="location.href='/defect/view?id=${defect.id}'">Edit</button>
 <!-- 									<button class="btn btn-danger" -->
 <%-- 										onclick="location.href='/currency/delete?id=${currency.id}'">Delete</button> --%>
 <%-- 								</sec:authorize> --%>
@@ -57,8 +61,8 @@
 			</div>
 		</div>
 <%-- 		<sec:authorize access="hasRole('ADMIN')"> --%>
-<!-- 			<button class="btn btn-primary" -->
-<!-- 				onclick="location.href='/currency/add'">Add new issue</button> -->
+			<button class="btn btn-primary"
+				onclick="location.href='/defect/add'">Add issue</button>
 <%-- 		</sec:authorize> --%>
 <!-- 			<button class="btn btn-primary" -->
 <!-- 				onclick="location.href='/'">Return to Main</button> -->

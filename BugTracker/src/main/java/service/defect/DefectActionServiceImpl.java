@@ -29,15 +29,14 @@ public class DefectActionServiceImpl implements DefectActionService {
 	
 	public Defect createDefect(DefectRequestData defectRequestData) {
 		Defect defect = getDefectBuilder()
-				.severity(defectRequestData.getSeverity())
 				.title(defectRequestData.getTitle())
 				.description(defectRequestData.getDescription())
+				.severity(defectRequestData.getSeverity())
 				.author(defectRequestData.getAuthor())
 				.assignedTo(defectRequestData.getAssignedTo())
-				.status(defectRequestData.getStatus())
 				.build();
 		
-//		defectDao.addDefect(defect);
+		defectDao.addDefect(defect);
 		return defect;
 
 	}

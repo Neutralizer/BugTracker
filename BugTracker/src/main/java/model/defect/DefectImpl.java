@@ -23,13 +23,13 @@ public class DefectImpl implements Defect, Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	Severity severity;
 	String title;
 	String description;
 	String author;
 	Date dateCreated;
 	String assignedTo;
 	Status status;
+	Severity severity;
 	Date lastChangedDate;
 	@ElementCollection(targetClass = CommentImpl.class , fetch = FetchType.EAGER)
 	Collection<Comment> comments = new ArrayList<Comment>();

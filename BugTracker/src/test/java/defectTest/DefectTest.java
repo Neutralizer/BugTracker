@@ -2,8 +2,6 @@ package defectTest;
 
 import org.junit.Test;
 
-import model.defect.DefectRequestDataBuilder;
-import model.defect.DefectRequestDataBuilderImpl;
 
 
 public class DefectTest {
@@ -50,9 +48,6 @@ public class DefectTest {
 
 	
 
-	private DefectRequestDataBuilder getDefectRequestDataBuilder() {
-		return new DefectRequestDataBuilderImpl();
-	}
 
 	// @Test
 	// public void testAddComment() {

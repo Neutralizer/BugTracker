@@ -5,6 +5,10 @@ import static org.junit.Assert.assertEquals;
 import java.util.Collection;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import dao.defect.DefectDao;
 import dao.defect.DefectDaoImpl;
@@ -12,35 +16,47 @@ import model.comment.Comment;
 import model.comment.CommentImpl;
 import model.defect.Defect;
 import model.defect.DefectRequestData;
-import model.defect.DefectRequestDataBuilder;
-import model.defect.DefectRequestDataBuilderImpl;
+import service.comment.CommentActionService;
 import service.defect.DefectActionService;
 import service.defect.DefectActionServiceImpl;
 
+@RunWith(value = SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/beans.xml" })
 public class TestDBDefect {
 
-	DefectActionService defectService = new DefectActionServiceImpl();
-	DefectDao dDao = new DefectDaoImpl();
+	@Autowired
+	DefectDao defectDao;
+	
+	@Autowired
+	DefectActionService defectActionService;
+
+	@Autowired
+	CommentActionService commentActionService;
 
 	@Test
 	public void testDB() {
 
-		DefectRequestDataBuilder dataBuilder = new DefectRequestDataBuilderImpl();
 
-		DefectRequestData defectRequestData = dataBuilder.author("John").assignedTo("Pesho").title("Oh my god!")
-				.severity("MEDIUM").status("NEW").build();
+		DefectRequestData defectRequestData = new DefectRequestData();
+		defectRequestData.setTitle("Title 2!");
+		defectRequestData.setAuthor("John");
+		defectRequestData.setAssignedTo("Pesho");
+		defectRequestData.setSeverity("MAJOR");
+				
 
-		Defect defect = defectService.createDefect(defectRequestData);
+		Defect defect = defectActionService.createDefect(defectRequestData);
 
-		dDao.addDefect(defect);
+//		dDao.addDefect(defect);
 
 		// comment("Peshso..look what have you done!").
 
-		Comment comment = new CommentImpl("Boss of Pesho", "Peshso..look what have you done!");
+		Comment comment = new CommentImpl("Boss of Pesho", "comment1");
+		Comment comment2 = new CommentImpl("Boss of Pesho", "comment2");
 
-		Defect defectWithComment = defectService.addComment(defect, comment);
+		Defect defectWithComment = defectActionService.addComment(defect, comment);
+		defectWithComment = defectActionService.addComment(defect, comment2);
 
-		dDao.update(defectWithComment);
+		defectDao.update(defectWithComment);
 
 	}
 	@Test
@@ -48,16 +64,16 @@ public class TestDBDefect {
 		
 		Comment comment = new CommentImpl("Boss of Pesho", "Peshso..you are fired!");
 		
-		Defect defectWithComment = defectService.addComment(dDao.getDefect(1), comment);
+		Defect defectWithComment = defectActionService.addComment(defectDao.getDefect(1), comment);
 		
-		dDao.update(defectWithComment);
+		defectDao.update(defectWithComment);
 		
 //		Collection<Comment> commentsss = defectWithComment.getComments();
 	}
 	
 	@Test
 	public void getComment() {
-		Defect defectWithComment = dDao.getDefect(1);
+		Defect defectWithComment = defectDao.getDefect(1);
 		Collection<Comment> coll = defectWithComment.getComments();
 		
 		assertEquals(2, coll.size());
@@ -66,7 +82,7 @@ public class TestDBDefect {
 	
 	@Test
 	public void getList() {
-		Collection<Defect> coll = defectService.getAll();
+		Collection<Defect> coll = defectActionService.getAll();
 		
 		
 	}
