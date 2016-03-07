@@ -36,9 +36,16 @@ public interface DefectActionService {
 	
 	/**
 	 * 
-	 * @returns list of all defects with parameters - title, severity, status
+	 * @returns list of all defects (with parameters - title, severity, status)
 	 */
 	Collection<Defect> getAll();
+	
+	/**
+	 * 
+	 * @param id the id of the defect to be retrieved
+	 * @returns the defect with the corresponding id
+	 */
+	Defect getDefect(int id);
 	
 	
 	

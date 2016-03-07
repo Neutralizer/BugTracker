@@ -96,7 +96,7 @@ public class DefectDaoImpl implements DefectDao{
 		
 	}
 
-	public Defect getDefect(int id) {
+	public Defect findDefect(int id) {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		try{
 			session.beginTransaction();

@@ -14,7 +14,7 @@ public interface DefectDao {
 	
 //	Collection<Defect> findList();
 	
-	Defect getDefect(int id);
+	Defect findDefect(int id);
 	
 	void deleteDefect(int id);
 }

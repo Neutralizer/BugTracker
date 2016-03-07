@@ -48,7 +48,7 @@
 									<button class="btn btn-primary"
 										onclick="location.href='/defect/view?id=${defect.id}'">View</button>
 									<button class="btn btn-primary"
-										onclick="location.href='/defect/view?id=${defect.id}'">Edit</button>
+										onclick="location.href='/defect/edit?id=${defect.id}'">Edit</button>
 <!-- 									<button class="btn btn-danger" -->
 <%-- 										onclick="location.href='/currency/delete?id=${currency.id}'">Delete</button> --%>
 <%-- 								</sec:authorize> --%>

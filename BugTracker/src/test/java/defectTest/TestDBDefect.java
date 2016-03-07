@@ -64,7 +64,7 @@ public class TestDBDefect {
 		
 		Comment comment = new CommentImpl("Boss of Pesho", "Peshso..you are fired!");
 		
-		Defect defectWithComment = defectActionService.addComment(defectDao.getDefect(1), comment);
+		Defect defectWithComment = defectActionService.addComment(defectDao.findDefect(1), comment);
 		
 		defectDao.update(defectWithComment);
 		
@@ -73,7 +73,7 @@ public class TestDBDefect {
 	
 	@Test
 	public void getComment() {
-		Defect defectWithComment = defectDao.getDefect(1);
+		Defect defectWithComment = defectDao.findDefect(1);
 		Collection<Comment> coll = defectWithComment.getComments();
 		
 		assertEquals(2, coll.size());

@@ -47,45 +47,57 @@
 				<i class="fa fa-pencil"></i>
 			</div>
 		</div>
-		<form:form action="/defect/add" method="POST">
+		<form:form action="/defect/edit" method="POST">
 		
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
 		</c:if>
 		
-			<div class="form-bottom">
-					<div class="form-group">
-						<h5>Title</h5>
-						<input type="text" name="title"	
-						class="form-control" >
-					</div>
-					<div class="form-group">
-						<h5>Description</h5>
-						<input type="text" name="description"
-							class="form-control" >
-					</div>
-					<div class="form-group">
-						<h5>Hidden - author</h5>
-						<input type="text" name="author"
-							class="form-control" >
-					</div>
-					<div class="form-group">
-						<h5>Assigned to</h5>
-						<input type="text" name="assignedTo"
-							class="form-control" >
-					</div>
-					
+		<div class="form-bottom">
+				<div class="form-group">
+					<h5>Title</h5>
+					<input type="text" name="title" value="${defect.title}"	
+					class="form-first-name form-control" id="form-first-name">
+				</div>
 				
-					<div class="form-group">
-						<h5>Severity</h5>
-							<select name="severity" >
-  								<option value="MINOR">MINOR</option>
-  								<option value="MEDIUM">MEDIUM</option>
-  								<option value="MAJOR">MAJOR</option>
-							</select>
-					</div>
-					<input type="submit" class="btn" value="Add" />
-			</div>
+				<div class="form-group">
+					<h5>Description - long</h5>
+					
+					<input type="text"  name="description" value="${defect.description}"
+						class="form-last-name form-control" id="form-last-name">
+				</div>
+				
+				<div class="form-group">
+					<h5>Assigned to</h5>
+					<input type="text" name="assignedTo" value="${defect.assignedTo}"	
+					class="form-first-name form-control" id="form-first-name">
+				</div>
+				
+				<div class="form-group">
+					<h5>Status</h5>
+					<input type="text" name="status" value="${defect.status}"	
+					class="form-first-name form-control" id="form-first-name">
+				</div>
+				
+				<div class="form-group">
+					<h5>Severity</h5>
+						<select name="severity">
+  							<option value="MINOR">MINOR</option>
+  							<option value="MEDIUM">MEDIUM</option>
+  							<option value="MAJOR">MAJOR</option>
+						</select>
+				</div>
+				
+				<div class="form-group">
+					<h5>Comment - long</h5>
+					
+					<input type="text"  name="comments" value="${defect.comments}"
+						class="form-last-name form-control" id="form-last-name">
+				</div>
+				
+				<input type="hidden" name="id"  value="${defect.id}"> 
+				<input type="submit" class="btn" value="Save changes" />
+		</div>
 		</form:form>
 		<button class="btn btn-primary"
 			onclick="location.href='/defect'">Return to Defect Listing</button>

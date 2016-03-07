@@ -70,6 +70,10 @@ public class DefectActionServiceImpl implements DefectActionService {
 		Collection<Defect> list = defectDao.findAllDefects();
 		return list;
 	}
+
+	public Defect getDefect(int id) {
+		return defectDao.findDefect(id);
+	}
 	
 	
 //	public Defect editComment(Defect defect, Comment editedComment, ){
