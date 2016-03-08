@@ -23,6 +23,13 @@ public class CommentImpl implements Comment {
 
 	public CommentImpl() {
 	}
+	
+	public CommentImpl( String text) {
+		this.author = "new Author (in commentImpl)";
+		this.creationDate = new Date();
+		this.text = text;
+		this.lastChangedDate = creationDate;
+	}
 
 	public CommentImpl(String author, String text) {
 		this.author = author;

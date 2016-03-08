@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import dao.defect.DefectDao;
 import model.comment.Comment;
+import model.comment.CommentImpl;
 import model.defect.Defect;
 import model.defect.DefectBuilder;
 import model.defect.DefectBuilderImpl;
@@ -42,7 +43,11 @@ public class DefectActionServiceImpl implements DefectActionService {
 	}
 
 	public Defect edit(DefectRequestData defectRequestData, Defect defect) {
-//		Comment comm = new CommentImpl(comment, text);
+		Comment comm = null;
+		if(!defectRequestData.getComment().equals("")){
+			comm = new CommentImpl(defectRequestData.getComment());
+		}
+		
 		Defect newDefect = getDefectBuilder()
 				.severity(defectRequestData.getSeverity())
 				.title(defectRequestData.getTitle())
@@ -50,6 +55,7 @@ public class DefectActionServiceImpl implements DefectActionService {
 				.author(defectRequestData.getAuthor())
 				.assignedTo(defectRequestData.getAssignedTo())
 				.status(defectRequestData.getStatus())
+				.comment(comm)
 				.build(defect);
 		
 		defectDao.update(newDefect);
@@ -73,6 +79,16 @@ public class DefectActionServiceImpl implements DefectActionService {
 
 	public Defect getDefect(int id) {
 		return defectDao.findDefect(id);
+	}
+
+	public void delete(int id) {
+		defectDao.deleteDefect(id);
+	}
+	
+	public Collection<Defect> getList() {
+		
+		Collection<Defect> list = defectDao.findList();
+		return list;
 	}
 	
 	

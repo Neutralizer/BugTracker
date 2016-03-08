@@ -55,7 +55,8 @@ public class TestDBDefect {
 
 		Defect defectWithComment = defectActionService.addComment(defect, comment);
 		defectWithComment = defectActionService.addComment(defect, comment2);
-
+		//TODO
+		// use update from service
 		defectDao.update(defectWithComment);
 
 	}
@@ -81,9 +82,19 @@ public class TestDBDefect {
 	
 	
 	@Test
-	public void getList() {
+	public void getAll() {
 		Collection<Defect> coll = defectActionService.getAll();
 		
+		
+		
+	}
+	
+	@Test
+	public void getList(){
+		
+		Collection<Defect> coll = defectActionService.getList();
+		
+		assertEquals(2, coll.size());
 		
 	}
 	

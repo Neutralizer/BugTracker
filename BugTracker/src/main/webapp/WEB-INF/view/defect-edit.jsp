@@ -63,7 +63,7 @@
 				<div class="form-group">
 					<h5>Description - long</h5>
 					
-					<input type="text"  name="description" value="${defect.description}"
+					<input type="text" name="description" value="${defect.description}"
 						class="form-last-name form-control" id="form-last-name">
 				</div>
 				
@@ -75,28 +75,37 @@
 				
 				<div class="form-group">
 					<h5>Status</h5>
-					<input type="text" name="status" value="${defect.status}"	
-					class="form-first-name form-control" id="form-first-name">
+					<select class="form-control" name=status >
+							<c:forEach items="${allStatus}" var="status">     										
+	 							<option value="${status}" 
+	 					${status == defect.status? 'selected' : ''}>${status}</option>
+							</c:forEach> 
+					</select>
 				</div>
 				
 				<div class="form-group">
 					<h5>Severity</h5>
-						<select name="severity">
-  							<option value="MINOR">MINOR</option>
-  							<option value="MEDIUM">MEDIUM</option>
-  							<option value="MAJOR">MAJOR</option>
+						<select class="form-control" name=severity >
+							<c:forEach items="${allSeverity}" var="severity">     										
+	 							<option value="${severity}" 
+	 					${severity == defect.severity? 'selected' : ''}>${severity}</option>
+							</c:forEach> 
 						</select>
 				</div>
 				
-				<div class="form-group">
-					<h5>Comment - long</h5>
-					
-					<input type="text"  name="comments" value="${defect.comments}"
-						class="form-last-name form-control" id="form-last-name">
-				</div>
-				
+				<table class="table" id="table">
+					<c:forEach items="${commentList}" var="comments">
+							<tr>
+							<td>${comments.text}</td>
+							</tr>
+					</c:forEach>
+							
+				</table>
+					<input type="text" size="80" name="comment" placeholder="add new comment"
+					class="form-first-name form-control" id="form-first-name">
+				<br/>
 				<input type="hidden" name="id"  value="${defect.id}"> 
-				<input type="submit" class="btn" value="Save changes" />
+				<input type="submit" class="btn" value="Apply" />
 		</div>
 		</form:form>
 		<button class="btn btn-primary"

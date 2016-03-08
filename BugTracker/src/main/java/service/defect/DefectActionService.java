@@ -48,5 +48,20 @@ public interface DefectActionService {
 	Defect getDefect(int id);
 	
 	
+	/**
+	 * 
+	 * @param id - the id of the defect to be deleted
+	 */
+	void delete(int id);
+	
+	
+	/**
+	 * 
+	 * @returns a list of defects with partial information
+	 */
+	Collection<Defect> getList();
+	
+	
+	
 	
 }

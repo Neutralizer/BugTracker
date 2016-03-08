@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/resources/css/bootstrap.min.css"> -->
 </head>
 <body>
 	<div class="container">
@@ -49,8 +49,8 @@
 										onclick="location.href='/defect/view?id=${defect.id}'">View</button>
 									<button class="btn btn-primary"
 										onclick="location.href='/defect/edit?id=${defect.id}'">Edit</button>
-<!-- 									<button class="btn btn-danger" -->
-<%-- 										onclick="location.href='/currency/delete?id=${currency.id}'">Delete</button> --%>
+									<button class="btn btn-danger"
+										onclick="location.href='/defect/delete?id=${defect.id}'">Delete</button>
 <%-- 								</sec:authorize> --%>
 								</td>
 							</tr>

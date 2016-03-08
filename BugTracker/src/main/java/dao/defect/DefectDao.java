@@ -17,4 +17,6 @@ public interface DefectDao {
 	Defect findDefect(int id);
 	
 	void deleteDefect(int id);
+	
+	Collection<Defect> findList();
 }

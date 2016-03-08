@@ -30,9 +30,11 @@ public class DefectController {
 
 	
 	@RequestMapping(value = "/defect", method = RequestMethod.GET)
-	public String currencies(Model model) {
+	public String defects(Model model) {
 		
-		Collection<Defect> list = defectActionService.getAll();
+//		Collection<Defect> list = defectActionService.getAll();
+		Collection<Defect> list = defectActionService.getList();
+		
 		
 		model.addAttribute("defectList", list);
 		return "list";
@@ -40,6 +42,8 @@ public class DefectController {
 	
 	@RequestMapping(value = "/defect/add", method = RequestMethod.GET)
 	public String add(Model model) {
+		
+		model.addAttribute("allSeverity", Severity.values());
 		
 		return "defect-add";
 	}
@@ -70,6 +74,9 @@ public class DefectController {
 		
 		Defect defect = defectActionService.getDefect(id);
 		model.addAttribute("defect", defect);
+		model.addAttribute("allSeverity", Severity.values());
+		model.addAttribute("allStatus", Status.values());
+		model.addAttribute("commentList", defectActionService.getDefect(id).getComments());
 		
 		return "defect-edit";
 	}
@@ -86,12 +93,21 @@ public class DefectController {
 		} else {
 		
 		defectActionService.edit(defectRequestData, 
-				defectActionService.getDefect( defectRequestData.getId()));
+				defectActionService.getDefect(defectRequestData.getId()));
 
 
 
 		return "redirect:/defect";
 		}
+	}
+	
+	@RequestMapping(value = "/defect/delete", method = RequestMethod.GET)
+	public String delete(Model model, @RequestParam(value = "id", required = true) int id) {
+		
+		
+		defectActionService.delete(id);
+		
+		return "redirect:/defect";
 	}
 	
 	

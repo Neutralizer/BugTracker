@@ -1,7 +1,5 @@
 package model.defect;
 
-import java.util.Date;
-
 public class DefectRequestData {
 
 	private int id;
@@ -13,7 +11,7 @@ public class DefectRequestData {
 	private String severity;
 	private String status;
 	private String lastChangedDate;
-	private String comments;
+	private String comment;
 
 	public int getId() {
 		return id;
@@ -87,12 +85,13 @@ public class DefectRequestData {
 		this.lastChangedDate = lastChangedDate;
 	}
 
-	public String getComments() {
-		return comments;
+	public String getComment() {
+		return comment;
 	}
 
-	public void setComments(String comments) {
-		this.comments = comments;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
+
 
 }

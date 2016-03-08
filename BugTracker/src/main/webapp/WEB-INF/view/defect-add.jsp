@@ -78,11 +78,11 @@
 				
 					<div class="form-group">
 						<h5>Severity</h5>
-							<select name="severity" >
-  								<option value="MINOR">MINOR</option>
-  								<option value="MEDIUM">MEDIUM</option>
-  								<option value="MAJOR">MAJOR</option>
-							</select>
+						<select class="form-control" name=severity >
+							<c:forEach items="${allSeverity}" var="severity">     										
+	 							<option value="${severity}">${severity}</option>
+							</c:forEach> 
+						</select>
 					</div>
 					<input type="submit" class="btn" value="Add" />
 			</div>
