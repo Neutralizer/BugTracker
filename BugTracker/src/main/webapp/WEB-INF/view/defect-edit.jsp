@@ -54,17 +54,43 @@
 		</c:if>
 		
 		<div class="form-bottom">
+		
+				<div class="form-group">
+					<h5>Id</h5>
+					<input type="text" name="title" value="${defect.id}" disabled
+					class="form-first-name form-control" id="form-first-name">
+				</div>
+				
 				<div class="form-group">
 					<h5>Title</h5>
-					<input type="text" name="title" value="${defect.title}"	
+					<input type="text" name="title" value="${defect.title}"	${disabled}
 					class="form-first-name form-control" id="form-first-name">
 				</div>
 				
 				<div class="form-group">
 					<h5>Description - long</h5>
 					
-					<input type="text" name="description" value="${defect.description}"
+					<input type="text" size="80" name="description" 
+					value="${defect.description}" ${disabled}
 						class="form-last-name form-control" id="form-last-name">
+				</div>
+				
+				<div class="form-group">
+					<h5>Author</h5>
+					<input type="text" name="title" value="${defect.author}" disabled	
+					class="form-first-name form-control" id="form-first-name">
+				</div>
+				
+				<div class="form-group">
+					<h5>Date created</h5>
+					<input type="text" name="title" value="${defect.dateCreated}" disabled
+					class="form-first-name form-control" id="form-first-name">
+				</div>
+				
+				<div class="form-group">
+					<h5>Last changed date</h5>
+					<input type="text" name="title" value="${defect.lastChangedDate}" disabled
+					class="form-first-name form-control" id="form-first-name">
 				</div>
 				
 				<div class="form-group">

@@ -110,6 +110,31 @@ public class DefectController {
 		return "redirect:/defect";
 	}
 	
+	@RequestMapping(value = "/defect/view", method = RequestMethod.GET)
+	public String viewGet(Model model, @RequestParam(value = "id", required = true) int id) {
+		
+		Defect defect = defectActionService.getDefect(id);
+		model.addAttribute("disabled", "disabled");
+		model.addAttribute("defect", defect);
+		model.addAttribute("allSeverity", Severity.values());
+		model.addAttribute("allStatus", Status.values());
+		model.addAttribute("commentList", defectActionService.getDefect(id).getComments());
+		
+		return "defect-edit";
+	}
+	
+	
+	
+	@RequestMapping(value = "/defect/view", method = RequestMethod.POST)
+	public String view(Model model, @ModelAttribute DefectRequestData defectRequestData) {
+		
+		
+		defectActionService.edit(defectRequestData, 
+				defectActionService.getDefect(defectRequestData.getId()));
+
+		return "redirect:/defect";
+	}
+	
 	
 
 }

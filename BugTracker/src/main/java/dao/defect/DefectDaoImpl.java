@@ -79,15 +79,15 @@ public class DefectDaoImpl implements DefectDao {
 			List<List> result = (List<List>) session.createQuery(hql).list();
 			Collection<Defect> coll = new ArrayList<Defect>();
 
-			for (int k = 0; k < result.size(); k++) {
-				Object i = result.get(k);
-				List da = (List) i;
-				Object[] wtf = da.toArray();
+			for (int r = 0; r < result.size(); r++) {
+				Object obj = result.get(r);
+				List list = (List) obj;
+				Object[] arr = list.toArray();
 				Defect defect = getDefectBuilder()
-						.id((Integer) wtf[0])
-						.title((String) wtf[1])
-						.severity((String) wtf[2].toString())
-						.status((String) wtf[3].toString()).build();
+						.id((Integer) arr[0])
+						.title((String) arr[1])
+						.severity((String) arr[2].toString())
+						.status((String) arr[3].toString()).build();
 				coll.add(defect);
 
 			}

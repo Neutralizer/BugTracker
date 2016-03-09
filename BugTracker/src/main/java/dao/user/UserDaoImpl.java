@@ -2,6 +2,7 @@ package dao.user;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import dao.HibernateSessionManager;
 import model.defect.Defect;
@@ -57,6 +58,22 @@ public class UserDaoImpl implements UserDao{
 		try{
 			session.beginTransaction();
 			UserImpl user = session.get(UserImpl.class, id);
+			session.getTransaction().commit();
+			return user;
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+
+	public User getUserByUsername(String username) {
+		Session session = HibernateSessionManager.getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			UserImpl user = (UserImpl) session.createCriteria(UserImpl.class)
+					.add(Restrictions.eq("username", username));
 			session.getTransaction().commit();
 			return user;
 		} catch (HibernateException e) {
