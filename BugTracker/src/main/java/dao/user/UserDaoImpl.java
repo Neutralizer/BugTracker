@@ -1,14 +1,15 @@
 package dao.user;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import dao.HibernateSessionManager;
-import model.defect.Defect;
-import model.defect.DefectImpl;
+import model.user.Role;
 import model.user.User;
-import model.user.UserImpl;
 
 public class UserDaoImpl implements UserDao{
 	
@@ -43,7 +44,7 @@ public class UserDaoImpl implements UserDao{
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
-			UserImpl defect = session.get(UserImpl.class, id);
+			User defect = session.get(User.class, id);
 			session.delete(defect);
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
@@ -57,7 +58,7 @@ public class UserDaoImpl implements UserDao{
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
-			UserImpl user = session.get(UserImpl.class, id);
+			User user = session.get(User.class, id);
 			session.getTransaction().commit();
 			return user;
 		} catch (HibernateException e) {
@@ -72,7 +73,7 @@ public class UserDaoImpl implements UserDao{
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
-			UserImpl user = (UserImpl) session.createCriteria(UserImpl.class)
+			User user = (User) session.createCriteria(User.class)
 					.add(Restrictions.eq("username", username));
 			session.getTransaction().commit();
 			return user;
@@ -83,6 +84,29 @@ public class UserDaoImpl implements UserDao{
 		}
 		return null;
 	}
+
+	public Collection<Role> findRoles() {
+		Session session = HibernateSessionManager.getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			Collection<Role> roles = (Collection<Role>) session.createCriteria(Role.class).list();
+			session.getTransaction().commit();
+			return roles;
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
+		return new ArrayList<Role>();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }

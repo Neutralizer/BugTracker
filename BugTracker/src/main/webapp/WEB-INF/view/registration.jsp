@@ -64,19 +64,30 @@
 
 			<table>
 				<tr>
-					<td>User:</td>
+					<td>User name:</td>
 					<td><input type='text' name='username' value=''></td>
 				</tr>
+				
+				<tr>
+					<td>Full name:</td>
+					<td><input type='text' name='fullName' value=''></td>
+				</tr>
+				
+				<tr>
+					<td>Email</td>
+					<td><input type='text' name='email' value=''></td>
+				</tr>
+				
 				<tr>
 					<td>Password:</td>
 					<td><input type='password' name='password' /></td>
 				</tr>
 				<tr>
-					<td>Role:</td>
+					<td>Position:</td>
 					<td>
 						<select name="role">
 							<c:forEach items="${roleList}" var="r">
-								<option value="${r}">${r}</option>
+								<option value="${r.code}">${r.role}</option>
 							</c:forEach>
 						</select>
 					</td>

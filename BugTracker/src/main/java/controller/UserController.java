@@ -11,13 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import model.RequestData;
-import model.currency.Currency;
 import model.user.Role;
 import model.user.User;
-import model.user.UserRequestData;
-import services.currency.CurrencyService;
-import services.user.UserService;
+import service.user.UserService;
 
 @Controller
 public class UserController {
@@ -38,24 +34,24 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String register(Model model, @ModelAttribute UserRequestData userRequest) {
+	public String register(Model model, @ModelAttribute User userRequest) {
 
 		String regexValidator = "^[A-Za-z0-9_-]{3,15}$";
 
 		if (userRequest.getUsername().matches(regexValidator)
 				&& userRequest.getPassword().matches(regexValidator)) {
 
-			User user = new User();
-			user.setUsername(userRequest.getUsername());
-			user.setPassword(userRequest.getPassword());
-			user.setRole(Role.valueOf(userRequest.getRole().toUpperCase()));
+//			User user = new User();
+//			user.setUsername(userRequest.getUsername());
+//			user.setPassword(userRequest.getPassword());
+//			user.setRole(Role.valueOf(userRequest.getRole().toUpperCase()));
 
-			boolean isUserExisting = userService.isExisting(user);
+			boolean isUserExisting = userService.isExisting(userRequest);
 
 			if (isUserExisting) {
 				model.addAttribute("error", "Username is taken!");
 			} else {
-				userService.create(user);
+				userService.create(userRequest);
 				model.addAttribute("success", "Username successfully created!");
 			}
 

@@ -13,6 +13,7 @@
 		<intercept-url pattern="/defect/edit" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/defect/add" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/defect/delete" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/defect/view" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 		
 		
