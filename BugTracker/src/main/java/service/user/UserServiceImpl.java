@@ -24,14 +24,18 @@ public class UserServiceImpl implements UserService {
 		return userDao.findRoles();
 	}
 
-	public boolean isExisting(User userRequest) {
-		User user = userDao.getUserByUsername(userRequest.getUsername());
+	public boolean isExisting(String username) {
+		User user = userDao.getUserByUsername(username);
 		return user != null ? true : false;
 	}
 
 	public void create(User userRequest) {
 		userDao.add(userRequest);
 		
+	}
+
+	public Role getRoleByCode(String code) {
+		return userDao.findRoleByCode(code);
 	}
 
 }

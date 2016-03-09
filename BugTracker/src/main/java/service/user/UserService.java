@@ -20,7 +20,9 @@ public interface UserService {
 	
 	Collection<Role> getRoles();
 
-	boolean isExisting(User userRequest);
+	boolean isExisting(String username);
 
 	void create(User userRequest);
+	
+	Role getRoleByCode(String code);
 }

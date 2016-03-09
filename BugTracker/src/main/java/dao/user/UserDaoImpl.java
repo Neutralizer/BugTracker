@@ -3,6 +3,7 @@ package dao.user;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -73,8 +74,8 @@ public class UserDaoImpl implements UserDao{
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
-			User user = (User) session.createCriteria(User.class)
-					.add(Restrictions.eq("username", username));
+			User user = (User)session.createCriteria(User.class)
+					.add(Restrictions.eq("username", username)).uniqueResult();
 			session.getTransaction().commit();
 			return user;
 		} catch (HibernateException e) {
@@ -98,6 +99,22 @@ public class UserDaoImpl implements UserDao{
 			session.close();
 		}
 		return new ArrayList<Role>();
+	}
+
+	public Role findRoleByCode(String code) {
+		Session session = HibernateSessionManager.getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			Role role = (Role) session.createCriteria(Role.class)
+					.add(Restrictions.eq("code", code)).uniqueResult();
+			session.getTransaction().commit();
+			return role;
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
+		return null;
 	}
 	
 	

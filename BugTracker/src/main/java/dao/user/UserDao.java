@@ -18,5 +18,7 @@ public interface UserDao {
 	User getUserByUsername(String username);
 	
 	Collection<Role> findRoles();
+	
+	Role findRoleByCode(String code);
 
 }

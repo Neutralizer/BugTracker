@@ -1,34 +1,12 @@
 package model.user;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+public class UserData {
 
-@Entity
-public class User {
-
-	@Id
 	private String username;
 	private String fullName;
 	private String email;
 	private String password;
-	@OneToOne(targetEntity = Role.class)
-	private Role role;
-
-	public User() {
-	}
-
-	public User(String username, String fullName, String email, String password, Role role) {
-		this.username = username;
-		this.fullName = fullName;
-		this.email = email;
-		this.password = password;
-		this.role = role;
-	}
+	private String role;
 
 	public String getUsername() {
 		return username;
@@ -62,11 +40,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

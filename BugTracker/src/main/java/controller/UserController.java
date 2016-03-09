@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import model.user.Role;
 import model.user.User;
+import model.user.UserData;
 import service.user.UserService;
 
 @Controller
@@ -34,7 +35,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String register(Model model, @ModelAttribute User userRequest) {
+	public String register(Model model, @ModelAttribute UserData userRequest) {
 
 		String regexValidator = "^[A-Za-z0-9_-]{3,15}$";
 
@@ -46,12 +47,20 @@ public class UserController {
 //			user.setPassword(userRequest.getPassword());
 //			user.setRole(Role.valueOf(userRequest.getRole().toUpperCase()));
 
-			boolean isUserExisting = userService.isExisting(userRequest);
+			boolean isUserExisting = userService.isExisting(userRequest.getUsername());
 
 			if (isUserExisting) {
 				model.addAttribute("error", "Username is taken!");
 			} else {
-				userService.create(userRequest);
+				
+				User user = new User();
+				user.setUsername(userRequest.getUsername());
+				user.setFullName(userRequest.getFullName());
+				user.setEmail(userRequest.getEmail());
+				user.setPassword(userRequest.getPassword());
+				user.setRole(userService.getRoleByCode(userRequest.getRole()));
+				
+				userService.create(user);
 				model.addAttribute("success", "Username successfully created!");
 			}
 
