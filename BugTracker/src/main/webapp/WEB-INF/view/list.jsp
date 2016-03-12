@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-<!-- <link rel="stylesheet" href="/resources/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
 	<div class="container">
@@ -12,7 +12,7 @@
 				<h3>Defect List</h3>
 			</div>
 		</div>
-		<form:form action="/list" method="POST">
+		<form:form action="/defect" method="POST">
 			<div class="col-lg-4 col-lg-offset-4">
 				<div class="input-group">
 					<input type="text" class="form-control" name="name" value="${searchedValue}" placeholder="Search for issue">

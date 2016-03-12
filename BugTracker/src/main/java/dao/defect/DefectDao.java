@@ -19,4 +19,6 @@ public interface DefectDao {
 	void deleteDefect(int id);
 	
 	Collection<Defect> findList();
+	
+	Collection<Defect> findAllLike(String key);
 }

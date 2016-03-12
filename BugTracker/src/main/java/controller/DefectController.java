@@ -38,6 +38,16 @@ public class DefectController {
 		
 		model.addAttribute("defectList", list);
 		return "list";
+		
+	}
+	
+	@RequestMapping(value = "/defect", method = RequestMethod.POST)
+	public String search(Model model, @ModelAttribute("name") String name) {
+		Collection<Defect> list = defectActionService.getAllLike(name);
+		model.addAttribute("defectList", list);
+		model.addAttribute("searchedValue", name);
+		return "list";
+//		return "redirect:/defect";
 	}
 	
 	@RequestMapping(value = "/defect/add", method = RequestMethod.GET)

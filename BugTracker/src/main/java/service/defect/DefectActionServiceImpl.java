@@ -91,6 +91,10 @@ public class DefectActionServiceImpl implements DefectActionService {
 		return list;
 	}
 	
+	public Collection<Defect> getAllLike(String key){
+		return defectDao.findAllLike(key);
+	}
+	
 	
 //	public Defect editComment(Defect defect, Comment editedComment, ){
 //		

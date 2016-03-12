@@ -61,6 +61,13 @@ public interface DefectActionService {
 	 */
 	Collection<Defect> getList();
 	
+	/**
+	 * 
+	 * @param key the keyword based on which the defects will be retrieved
+	 * @returns all defects which start with the keyword
+	 */
+	Collection<Defect> getAllLike(String key);
+	
 	
 	
 	
