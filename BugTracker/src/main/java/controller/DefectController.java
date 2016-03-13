@@ -76,10 +76,6 @@ public class DefectController {
 			return add(model);
 			
 		} else {
-			// add author 
-			User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		    String username = user.getUsername(); //get logged in username
-		    defectRequestData.setAuthor(userService.getCurrentUserFullName(username));
 
 		defectActionService.createDefect(defectRequestData);
 

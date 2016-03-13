@@ -8,7 +8,7 @@ public interface Comment {
 	
 	String getAuthor();
 
-	Date getCreationDate();
+	String getCreationDate();
 	
 	String getText();
 	

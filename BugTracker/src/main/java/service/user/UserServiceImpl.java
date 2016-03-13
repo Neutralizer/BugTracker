@@ -3,6 +3,7 @@ package service.user;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import dao.user.UserDao;
@@ -20,7 +21,10 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
-	public String getCurrentUserFullName(String username) {
+	public String getCurrentUserFullName() {
+		org.springframework.security.core.userdetails.User userPrincipal = 
+				(org.springframework.security.core.userdetails.User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    String username = userPrincipal.getUsername();
 		User user = userDao.findUserByUsername(username);
 		return user.getFullName();
 	}

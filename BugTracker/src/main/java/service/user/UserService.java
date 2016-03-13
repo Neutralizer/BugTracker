@@ -19,7 +19,7 @@ public interface UserService {
 	
 	User getCurrentUser();
 	
-	String getCurrentUserFullName(String username);
+	String getCurrentUserFullName();
 	
 	Collection<Role> getRoles();
 

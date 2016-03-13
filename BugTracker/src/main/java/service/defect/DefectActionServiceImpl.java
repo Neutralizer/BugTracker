@@ -35,11 +35,13 @@ public class DefectActionServiceImpl implements DefectActionService {
 	UserService userService;
 	
 	public Defect createDefect(DefectRequestData defectRequestData) {
+		String fullUserName = userService.getCurrentUserFullName();
+		
 		Defect defect = getDefectBuilder()
 				.title(defectRequestData.getTitle())
 				.description(defectRequestData.getDescription())
 				.severity(defectRequestData.getSeverity())
-				.author(defectRequestData.getAuthor())
+				.author(fullUserName)
 				.assignedTo(defectRequestData.getAssignedTo())
 				.build();
 		
@@ -51,9 +53,7 @@ public class DefectActionServiceImpl implements DefectActionService {
 	public Defect edit(DefectRequestData defectRequestData, Defect defect) {
 		Comment comm = null;
 		if(!defectRequestData.getComment().equals("")){
-			User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		    String username = user.getUsername(); //get logged in username
-			comm = new CommentImpl(userService.getCurrentUserFullName(username), 
+			comm = new CommentImpl(userService.getCurrentUserFullName(), 
 					defectRequestData.getComment());
 		}
 		
@@ -61,7 +61,6 @@ public class DefectActionServiceImpl implements DefectActionService {
 				.severity(defectRequestData.getSeverity())
 				.title(defectRequestData.getTitle())
 				.description(defectRequestData.getDescription())
-				.author(defectRequestData.getAuthor())
 				.assignedTo(defectRequestData.getAssignedTo())
 				.status(defectRequestData.getStatus())
 				.comment(comm)

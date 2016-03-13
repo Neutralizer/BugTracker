@@ -52,6 +52,8 @@ public class DefectBuilderImpl implements DefectBuilder {
 	public DefectBuilder status(String status) {
 		if(status != null){
 			this.status = Status.valueOf(status.toUpperCase());
+		} else {
+			this.status = Status.NEW;
 		}
 		return this;
 	}
@@ -71,7 +73,7 @@ public class DefectBuilderImpl implements DefectBuilder {
 		defect.dateCreated = new Date();
 		defect.assignedTo = this.assignedTo;
 		defect.severity = this.severity;
-		defect.status = Status.NEW;
+		defect.status = this.status;
 		defect.lastChangedDate = new Date();
 //		defect.comments.add(this.comment);
 

@@ -1,5 +1,7 @@
 package model.comment;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Embeddable;
@@ -7,35 +9,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
-
-
 @Embeddable
 @Table(name = "comment")
 public class CommentImpl implements Comment {
 
-//	@Id
+	// @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	private String author;
-	private Date creationDate;
+	private String creationDate;
 	private Date lastChangedDate;
 	private String text;
 
 	public CommentImpl() {
 	}
-	
-	public CommentImpl( String text) {
-		this.author = "new Author (in commentImpl)";
-		this.creationDate = new Date();
-		this.text = text;
-		this.lastChangedDate = creationDate;
-	}
+
+	// public CommentImpl( String text) {
+	// this.author = "new Author (in commentImpl)";
+	// this.creationDate = new Date();
+	// this.text = text;
+	// this.lastChangedDate = creationDate;
+	// }
 
 	public CommentImpl(String author, String text) {
+		SimpleDateFormat formatter = new SimpleDateFormat("y-M-d H:m");
+
 		this.author = author;
-		this.creationDate = new Date();
+		this.creationDate = formatter.format(new Date());
 		this.text = text;
-		this.lastChangedDate = creationDate;
+		// this.lastChangedDate = creationDate;
 	}
 
 	public CommentImpl(Comment comment, String text) {
@@ -57,7 +59,7 @@ public class CommentImpl implements Comment {
 		return text;
 	}
 
-	public Date getCreationDate() {
+	public String getCreationDate() {
 		return creationDate;
 	}
 

@@ -112,7 +112,7 @@
 				
 				<div class="form-group">
 					<h5>Severity</h5>
-						<select class="form-control" name=severity >
+						<select class="form-control" name=severity  ${disabled}>
 							<c:forEach items="${allSeverity}" var="severity">     										
 	 							<option value="${severity}" 
 	 					${severity == defect.severity? 'selected' : ''}>${severity}</option>
@@ -123,8 +123,8 @@
 				<table class="table" id="table">
 					<c:forEach items="${commentList}" var="comments">
 							<tr>
+							<td>${comments.creationDate} </td>
 							<td>${comments.author} - ${comments.text}</td>
-							<td> </td>
 							</tr>
 					</c:forEach>
 							
