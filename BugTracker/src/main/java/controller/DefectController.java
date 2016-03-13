@@ -70,7 +70,7 @@ public class DefectController {
 			return add(model);
 			
 		} else {
-			
+			// add author 
 
 		defectActionService.createDefect(defectRequestData);
 

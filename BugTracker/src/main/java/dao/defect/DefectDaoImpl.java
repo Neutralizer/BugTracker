@@ -69,14 +69,16 @@ public class DefectDaoImpl implements DefectDao {
 		return new ArrayList<Defect>();
 	}
 
-	@SuppressWarnings("unchecked")
 	public Collection<Defect> findList() {
 		// defect is using builder, so no constructor for HQL to do its magic
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
 			String hql = "select new list (id, title, severity, status) from DefectImpl";
-			List<List> result = (List<List>) session.createQuery(hql).list();
+			Query query = session.createQuery(hql);
+//			query.setFirstResult(0);
+//			query.setMaxResults(100);
+			List<List> result = (List<List>) query.list();
 			Collection<Defect> coll = new ArrayList<Defect>();
 
 			for (int r = 0; r < result.size(); r++) {

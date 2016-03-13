@@ -12,7 +12,7 @@ public class LoginController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main() {
 
-		return "main";
+		return "redirect:/defect";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

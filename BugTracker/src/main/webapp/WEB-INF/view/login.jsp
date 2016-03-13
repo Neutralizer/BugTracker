@@ -56,30 +56,12 @@
 					<td>User name:</td>
 					<td><input type='text' name='username' value=''></td>
 				</tr>
-				<tr>
-					<td>Full name:</td>
-					<td><input type='text' name='fullName' value=''></td>
-				</tr>
-				
-				<tr>
-					<td>Email</td>
-					<td><input type='text' name='email' value=''></td>
-				</tr>
 				
 				<tr>
 					<td>Password:</td>
 					<td><input type='password' name='password' /></td>
 				</tr>
-				<tr>
-					<td>Position:</td>
-					<td>
-						<select name="role">
-							<c:forEach items="${roleList}" var="r">
-								<option value="${r.code}">${r.role}</option>
-							</c:forEach>
-						</select>
-					</td>
-				</tr>
+				
 				<tr>
 				<td colspan='2'>
 					<input type="submit" value="submit" />

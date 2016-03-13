@@ -5,22 +5,22 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
-
-	<http auto-config="true" use-expressions="true" >  
-	
-<!-- 		<intercept-url pattern="/login" access="permitAll" /> -->
-<!-- 		<intercept-url pattern="/registration" access="permitAll" /> -->
-<!-- 		<intercept-url pattern="/defect/edit" access="hasRole('ROLE_ADMIN')"/> -->
-<!-- 		<intercept-url pattern="/defect/add" access="hasRole('ROLE_ADMIN')"/> -->
-<!-- 		<intercept-url pattern="/defect/view" access="hasRole('ROLE_ADMIN')"/> -->
-<!-- 		<intercept-url pattern="/defect/delete" access="hasRole('ROLE_ADMIN')"/> -->
-<!-- 		<intercept-url pattern="/**" access="isAuthenticated()" /> -->
+	<http pattern="/favicon.ico" security="none" />
+	<http auto-config="true" use-expressions="true"  >  
+		
+		<intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/registration" access="permitAll" />
+		<intercept-url pattern="/defect/edit" access="hasRole('ROLE_QA') or hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/defect/add" access="hasRole('ROLE_QA') or hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/defect/view" access="hasRole('ROLE_QA') or hasRole('ROLE_DEV') or hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/defect/delete" access="hasRole('ROLE_QA') or hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/**" access="isAuthenticated()" />
 		
 		
 		<form-login 
 		    login-page="/login" 
 		    login-processing-url="/j_spring_security_check"
-		    default-target-url="/" 
+		    default-target-url="/defect" 
 			authentication-failure-url="/login?error" 
 			username-parameter="username"
 			password-parameter="password" />

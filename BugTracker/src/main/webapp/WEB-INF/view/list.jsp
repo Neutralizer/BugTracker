@@ -6,12 +6,28 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
+
+	<c:url value="/j_spring_security_logout" var="logoutUrl" />
+
+	<form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</form>
+
+	<script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
+		
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
+			
 				<h3>Defect List</h3>
 			</div>
 		</div>
+		
 		<form:form action="/defect" method="POST">
 			<div class="col-lg-4 col-lg-offset-4">
 				<div class="input-group">
@@ -25,6 +41,8 @@
 			<!-- /.col-lg-6 -->
 
 		</form:form >
+		
+				
 		<div class="row">
 			<div class="col-lg-12">
 				<table class="table" id="table">
@@ -44,14 +62,14 @@
 								<td>${defect.severity}</td>
 								<td>${defect.status}</td>
 								<td>
-<%-- 								<sec:authorize access="hasRole('ADMIN')"> --%>
 									<button class="btn btn-primary"
 										onclick="location.href='/defect/view?id=${defect.id}'">View</button>
+								<sec:authorize access="hasRole('ADMIN') or hasRole('QA')">
 									<button class="btn btn-primary"
 										onclick="location.href='/defect/edit?id=${defect.id}'">Edit</button>
 									<button class="btn btn-danger"
 										onclick="location.href='/defect/delete?id=${defect.id}'">Delete</button>
-<%-- 								</sec:authorize> --%>
+								</sec:authorize>
 								</td>
 							</tr>
 						</c:forEach>
@@ -60,13 +78,19 @@
 				<hr>
 			</div>
 		</div>
-<%-- 		<sec:authorize access="hasRole('ADMIN')"> --%>
+		<sec:authorize access="hasRole('ADMIN') or hasRole('QA')">
 			<button class="btn btn-primary"
 				onclick="location.href='/defect/add'">Add issue</button>
-<%-- 		</sec:authorize> --%>
+		</sec:authorize>
+		<p> </p>
+		<div class="col-lg-4 col-lg-offset-4" align="left">
+			<button class="btn btn-danger"
+				onclick="location.href='javascript:formSubmit()'">Logout</button>
+		</div>
 <!-- 			<button class="btn btn-primary" -->
 <!-- 				onclick="location.href='/'">Return to Main</button> -->
 	</div>
+	
 
 
 
