@@ -64,11 +64,7 @@
 						<input type="text" name="description"
 							class="form-control" >
 					</div>
-					<div class="form-group">
-						<h5>Hidden - author</h5>
-						<input type="text" name="author"
-							class="form-control" >
-					</div>
+
 					<div class="form-group">
 						<h5>Assigned to</h5>
 						<input type="text" name="assignedTo"

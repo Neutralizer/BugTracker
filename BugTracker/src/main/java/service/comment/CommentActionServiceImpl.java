@@ -28,8 +28,8 @@ public class CommentActionServiceImpl implements CommentActionService {
 	
 
 	public Comment createComment(String text) {
-		Comment comm = new CommentImpl(userService.getCurrentUserID(), text);
-		return comm;
+//		Comment comm = new CommentImpl(userService.getCurrentUserID(), text);
+		return null;
 	}
 
 	public Comment edit(String text, Comment comment) {

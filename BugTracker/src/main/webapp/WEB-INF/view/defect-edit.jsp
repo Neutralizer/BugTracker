@@ -47,7 +47,8 @@
 				<i class="fa fa-pencil"></i>
 			</div>
 		</div>
-		<form:form action="/defect/edit" method="POST">
+		<form:form action="${defectAction}" method="POST">
+<%-- 		<form:form action="/defect/edit" method="POST"> --%>
 		
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
@@ -122,7 +123,8 @@
 				<table class="table" id="table">
 					<c:forEach items="${commentList}" var="comments">
 							<tr>
-							<td>${comments.text}</td>
+							<td>${comments.author} - ${comments.text}</td>
+							<td> </td>
 							</tr>
 					</c:forEach>
 							

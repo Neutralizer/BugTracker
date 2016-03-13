@@ -3,6 +3,8 @@ package service.defect;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 
 import dao.defect.DefectDao;
 import model.comment.Comment;
@@ -11,6 +13,7 @@ import model.defect.Defect;
 import model.defect.DefectBuilder;
 import model.defect.DefectBuilderImpl;
 import model.defect.DefectRequestData;
+import service.user.UserService;
 
 /**
  * creates a new comment and edits it
@@ -27,6 +30,9 @@ public class DefectActionServiceImpl implements DefectActionService {
 	
 	@Autowired
 	DefectDao defectDao;
+	
+	@Autowired
+	UserService userService;
 	
 	public Defect createDefect(DefectRequestData defectRequestData) {
 		Defect defect = getDefectBuilder()
@@ -45,7 +51,10 @@ public class DefectActionServiceImpl implements DefectActionService {
 	public Defect edit(DefectRequestData defectRequestData, Defect defect) {
 		Comment comm = null;
 		if(!defectRequestData.getComment().equals("")){
-			comm = new CommentImpl(defectRequestData.getComment());
+			User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		    String username = user.getUsername(); //get logged in username
+			comm = new CommentImpl(userService.getCurrentUserFullName(username), 
+					defectRequestData.getComment());
 		}
 		
 		Defect newDefect = getDefectBuilder()

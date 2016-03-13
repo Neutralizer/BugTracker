@@ -10,8 +10,6 @@
 	<bean id="userService" class="service.user.UserServiceImpl" />
 	<bean id="defectDao" class="dao.defect.DefectDaoImpl"/>
 	<bean id="userDao" class="dao.user.UserDaoImpl" />
-<!-- 	<bean id="myAuthenticationSuccessHandler"  -->
-<!-- 	class="service.security.MySimpleAuthenticationSuccessHandler"></bean> -->
 	
 
 </beans>

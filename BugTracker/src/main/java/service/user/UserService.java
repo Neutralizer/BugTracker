@@ -16,7 +16,10 @@ public interface UserService {
 	 * fetches data about the requested user
 	 * @return
 	 */
-	String getCurrentUserID();
+	
+	User getCurrentUser();
+	
+	String getCurrentUserFullName(String username);
 	
 	Collection<Role> getRoles();
 

@@ -14,10 +14,15 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDao userDao;
-
-	public String getCurrentUserID() {
+	
+	public User getCurrentUser() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public String getCurrentUserFullName(String username) {
+		User user = userDao.findUserByUsername(username);
+		return user.getFullName();
 	}
 
 	public Collection<Role> getRoles() {
@@ -25,7 +30,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public boolean isExisting(String username) {
-		User user = userDao.getUserByUsername(username);
+		User user = userDao.findUserByUsername(username);
 		return user != null ? true : false;
 	}
 
@@ -37,5 +42,7 @@ public class UserServiceImpl implements UserService {
 	public Role getRoleByCode(String code) {
 		return userDao.findRoleByCode(code);
 	}
+
+
 
 }

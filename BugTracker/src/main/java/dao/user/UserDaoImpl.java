@@ -70,7 +70,7 @@ public class UserDaoImpl implements UserDao{
 		return null;
 	}
 
-	public User getUserByUsername(String username) {
+	public User findUserByUsername(String username) {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		try{
 			session.beginTransaction();

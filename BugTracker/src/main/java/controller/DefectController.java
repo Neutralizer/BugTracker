@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +20,7 @@ import model.defect.Severity;
 import model.defect.Status;
 import service.comment.CommentActionService;
 import service.defect.DefectActionService;
+import service.user.UserService;
 
 @Controller
 public class DefectController {
@@ -27,6 +30,9 @@ public class DefectController {
 
 	@Autowired
 	CommentActionService commentActionService;
+	
+	@Autowired
+	UserService userService;
 
 	
 	@RequestMapping(value = "/defect", method = RequestMethod.GET)
@@ -71,6 +77,9 @@ public class DefectController {
 			
 		} else {
 			// add author 
+			User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		    String username = user.getUsername(); //get logged in username
+		    defectRequestData.setAuthor(userService.getCurrentUserFullName(username));
 
 		defectActionService.createDefect(defectRequestData);
 
@@ -87,6 +96,7 @@ public class DefectController {
 		model.addAttribute("allSeverity", Severity.values());
 		model.addAttribute("allStatus", Status.values());
 		model.addAttribute("commentList", defectActionService.getDefect(id).getComments());
+		model.addAttribute("defectAction", "/defect/edit");
 		
 		return "defect-edit";
 	}
@@ -129,6 +139,7 @@ public class DefectController {
 		model.addAttribute("allSeverity", Severity.values());
 		model.addAttribute("allStatus", Status.values());
 		model.addAttribute("commentList", defectActionService.getDefect(id).getComments());
+		model.addAttribute("defectAction", "/defect/view");
 		
 		return "defect-edit";
 	}
