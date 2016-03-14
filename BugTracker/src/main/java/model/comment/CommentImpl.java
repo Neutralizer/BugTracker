@@ -37,7 +37,7 @@ public class CommentImpl implements Comment {
 		this.author = author;
 		this.creationDate = formatter.format(new Date());
 		this.text = text;
-		// this.lastChangedDate = creationDate;
+		// this.lastChangedDate = creationDate; must be changed to String
 	}
 
 	public CommentImpl(Comment comment, String text) {
