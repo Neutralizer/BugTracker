@@ -32,7 +32,7 @@ public class CommentImpl implements Comment {
 	// }
 
 	public CommentImpl(String author, String text) {
-		SimpleDateFormat formatter = new SimpleDateFormat("y-M-d H:m");
+		SimpleDateFormat formatter = new SimpleDateFormat("y-MM-d H:m");
 
 		this.author = author;
 		this.creationDate = formatter.format(new Date());
