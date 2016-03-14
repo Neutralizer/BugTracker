@@ -42,6 +42,7 @@ public class DefectActionServiceImpl implements DefectActionService {
 				.description(defectRequestData.getDescription())
 				.severity(defectRequestData.getSeverity())
 				.author(fullUserName)
+				.status(defectRequestData.getStatus())
 				.assignedTo(defectRequestData.getAssignedTo())
 				.build();
 		
