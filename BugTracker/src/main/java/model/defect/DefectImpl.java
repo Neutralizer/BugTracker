@@ -26,11 +26,11 @@ public class DefectImpl implements Defect, Serializable {
 	String title;
 	String description;
 	String author;
-	Date dateCreated;
+	String dateCreated;
 	String assignedTo;
 	Status status;
 	Severity severity;
-	Date lastChangedDate;
+	String lastChangedDate;
 	@ElementCollection(targetClass = CommentImpl.class , fetch = FetchType.EAGER)
 	Collection<Comment> comments = new ArrayList<Comment>();
 	
@@ -57,7 +57,7 @@ public class DefectImpl implements Defect, Serializable {
 		return author;
 	}
 
-	public Date getDateCreated() {
+	public String getDateCreated() {
 		return dateCreated;
 	}
 
@@ -69,7 +69,7 @@ public class DefectImpl implements Defect, Serializable {
 		return status;
 	}
 
-	public Date getLastChangedDate() {
+	public String getLastChangedDate() {
 		return lastChangedDate;
 	}
 

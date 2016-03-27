@@ -1,5 +1,6 @@
 package model.defect;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import model.comment.Comment;
@@ -64,23 +65,25 @@ public class DefectBuilderImpl implements DefectBuilder {
 	}
 
 	public Defect build() {
+		SimpleDateFormat formatter = new SimpleDateFormat("y-MM-d H:m");
 
 		DefectImpl defect = new DefectImpl();
 		defect.id = this.id;
 		defect.title = this.title;
 		defect.description = this.description;
 		defect.author = this.author;
-		defect.dateCreated = new Date();
+		defect.dateCreated = formatter.format(new Date());
 		defect.assignedTo = this.assignedTo;
 		defect.severity = this.severity;
 		defect.status = this.status;
-		defect.lastChangedDate = new Date();
+		defect.lastChangedDate = formatter.format(new Date());
 //		defect.comments.add(this.comment);
 
 		return defect;
 	}
 
 	public Defect build(Defect olddefect) {
+		SimpleDateFormat formatter = new SimpleDateFormat("y-MM-d H:m");
 		DefectImpl newDefect = copyDefectData(olddefect);
 		
 		if (this.severity != null) {
@@ -107,7 +110,7 @@ public class DefectBuilderImpl implements DefectBuilder {
 			newDefect.status = this.status;
 		}
 
-		newDefect.lastChangedDate = new Date();
+		newDefect.lastChangedDate = formatter.format(new Date());
 
 		if (this.comment != null) {
 			newDefect.comments.add(this.comment);

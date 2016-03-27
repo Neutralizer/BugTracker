@@ -17,13 +17,13 @@ public interface Defect {
 
 	String getAuthor();
 
-	Date getDateCreated();
+	String getDateCreated();
 
 	String getAssignedTo();
 
 	Status getStatus();
 
-	Date getLastChangedDate();
+	String getLastChangedDate();
 
 	Collection<Comment> getComments();
 
