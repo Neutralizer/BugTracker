@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-	<application>BugTracker v1.0</application>
-	<version>YOUR-VERSION-ID</version>
+	<application>zippy-bee-127016</application>
+	<version>1.0</version>
 	<threadsafe>true</threadsafe>
 </appengine-web-app>
