@@ -1,10 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 <head>
 	
 	<title>Login Page</title>
 	<style>
 /* 	<link rel="stylesheet" href="/resources/core/css/bootstrap.min.css"> */
+
 	.error {
 		padding: 15px;
 		margin-bottom: 20px;
@@ -75,7 +77,7 @@
 		</form>
 	</div>
 	
-	<button class="btn btn-primary" onclick="location.href='/registration'">Register</button>
+	<button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/registration'">Register</button>
 	
 
 </body>

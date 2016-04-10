@@ -47,7 +47,7 @@
 				<i class="fa fa-pencil"></i>
 			</div>
 		</div>
-		<form:form action="${defectAction}" method="POST">
+		<form:form action="${pageContext.request.contextPath}${defectAction}" method="POST">
 <%-- 		<form:form action="/defect/edit" method="POST"> --%>
 		
 		<c:if test="${not empty error}">
@@ -137,7 +137,7 @@
 		</div>
 		</form:form>
 		<button class="btn btn-primary"
-			onclick="location.href='/defect'">Return to Defect Listing</button>
+			onclick="location.href='${pageContext.request.contextPath}/defect'">Return to Defect Listing</button>
 	</div>
 
 	<!-- Javascript -->

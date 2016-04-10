@@ -60,7 +60,7 @@
 		</c:if>
 		
 		<form name='registrationForm'
-			action="/registration" method='POST'>
+			action="${pageContext.request.contextPath}/registration" method='POST'>
 
 			<table>
 				<tr>
@@ -103,7 +103,7 @@
 		</form>
 	</div>
 	
-	<button class="btn btn-primary" onclick="location.href='/login'">Login</button>
+	<button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/login'">Login</button>
 
 </body>
 </html>

@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		
-		<form:form action="/defect" method="POST">
+		<form:form action="${pageContext.request.contextPath}/defect" method="POST">
 			<div class="col-lg-4 col-lg-offset-4">
 				<div class="input-group">
 					<input type="text" class="form-control" name="name" value="${searchedValue}" placeholder="Search for issue">
@@ -63,12 +63,12 @@
 								<td>${defect.status}</td>
 								<td>
 									<button class="btn btn-primary"
-										onclick="location.href='/defect/view?id=${defect.id}'">View</button>
+										onclick="location.href='${pageContext.request.contextPath}/defect/view?id=${defect.id}'">View</button>
 								<sec:authorize access="hasRole('ADMIN') or hasRole('QA')">
 									<button class="btn btn-primary"
-										onclick="location.href='/defect/edit?id=${defect.id}'">Edit</button>
+										onclick="location.href='${pageContext.request.contextPath}/defect/edit?id=${defect.id}'">Edit</button>
 									<button class="btn btn-danger"
-										onclick="location.href='/defect/delete?id=${defect.id}'">Delete</button>
+										onclick="location.href='${pageContext.request.contextPath}/defect/delete?id=${defect.id}'">Delete</button>
 								</sec:authorize>
 								</td>
 							</tr>
@@ -80,7 +80,7 @@
 		</div>
 		<sec:authorize access="hasRole('ADMIN') or hasRole('QA')">
 			<button class="btn btn-primary"
-				onclick="location.href='/defect/add'">Add issue</button>
+				onclick="location.href='${pageContext.request.contextPath}/defect/add'">Add issue</button>
 		</sec:authorize>
 		<p> </p>
 		<div class="col-lg-4 col-lg-offset-4" align="left">
