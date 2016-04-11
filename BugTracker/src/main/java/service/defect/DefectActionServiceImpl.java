@@ -105,8 +105,4 @@ public class DefectActionServiceImpl implements DefectActionService {
 	}
 	
 	
-//	public Defect editComment(Defect defect, Comment editedComment, ){
-//		
-//	}
-
 }

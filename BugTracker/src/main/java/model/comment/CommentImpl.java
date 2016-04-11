@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Table(name = "comment")
 public class CommentImpl implements Comment {
 
-	// @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	private String author;
@@ -24,12 +23,6 @@ public class CommentImpl implements Comment {
 	public CommentImpl() {
 	}
 
-	// public CommentImpl( String text) {
-	// this.author = "new Author (in commentImpl)";
-	// this.creationDate = new Date();
-	// this.text = text;
-	// this.lastChangedDate = creationDate;
-	// }
 
 	public CommentImpl(String author, String text) {
 		SimpleDateFormat formatter = new SimpleDateFormat("y-MM-d H:m");

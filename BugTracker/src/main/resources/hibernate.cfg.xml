@@ -15,8 +15,16 @@
 		<mapping class="model.comment.CommentImpl"></mapping>
 		<mapping class="model.user.User"></mapping>
 		<mapping class="model.user.Role"></mapping>
-		
-<!-- 		Cecoceco1 -->
-		
+
+		<!-- Cecoceco1 -->
+
+<!-- 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dummydb</property> -->
+<!-- 		<property name="hibernate.connection.username">root</property> -->
+<!-- 		<property name="hibernate.connection.password">Cecoceco1</property> -->
+
+
+<!-- 		<property name="hibernate.connection.url">jdbc:mysql://127.11.52.2:3306/dummydb</property> -->
+<!-- 		<property name="hibernate.connection.username">adminhwihDyz</property> -->
+<!-- 		<property name="hibernate.connection.password">Gi7QjAnQRQ71</property> -->
 	</session-factory>
 </hibernate-configuration>

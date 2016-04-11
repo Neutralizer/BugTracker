@@ -24,6 +24,5 @@ public interface DefectBuilder {
 	
 	Defect build(Defect defect);
 
-//	Defect build(DefectRequestData defectRequestData);
 	
 }

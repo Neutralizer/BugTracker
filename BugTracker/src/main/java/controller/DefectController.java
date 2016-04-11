@@ -38,7 +38,6 @@ public class DefectController {
 	@RequestMapping(value = "/defect", method = RequestMethod.GET)
 	public String defects(Model model) {
 		
-//		Collection<Defect> list = defectActionService.getAll();
 		Collection<Defect> list = defectActionService.getList();
 		
 		
@@ -53,7 +52,6 @@ public class DefectController {
 		model.addAttribute("defectList", list);
 		model.addAttribute("searchedValue", name);
 		return "list";
-//		return "redirect:/defect";
 	}
 	
 	@RequestMapping(value = "/defect/add", method = RequestMethod.GET)
@@ -68,7 +66,6 @@ public class DefectController {
 	public String save(Model model, @ModelAttribute 
 			DefectRequestData defectRequestData) {
 		
-		//assignedTo not mandatory
 		if (defectRequestData.getTitle().equals("") 
 				|| defectRequestData.getDescription().equals("")) {
 			model.addAttribute("error", "Required fields are empty!");

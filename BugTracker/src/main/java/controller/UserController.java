@@ -24,9 +24,6 @@ public class UserController {
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String getRegistration(Model model) {
-		// Collection<String> roleList = new ArrayList<String>();
-		// roleList.add("user");
-		// roleList.add("admin");
 		Collection<Role> roleList = userService.getRoles();
 
 		model.addAttribute("roleList", roleList);
@@ -42,24 +39,19 @@ public class UserController {
 		if (userRequest.getUsername().matches(regexValidator)
 				&& userRequest.getPassword().matches(regexValidator)) {
 
-//			User user = new User();
-//			user.setUsername(userRequest.getUsername());
-//			user.setPassword(userRequest.getPassword());
-//			user.setRole(Role.valueOf(userRequest.getRole().toUpperCase()));
-
 			boolean isUserExisting = userService.isExisting(userRequest.getUsername());
 
 			if (isUserExisting) {
 				model.addAttribute("error", "Username is taken!");
 			} else {
-				
+
 				User user = new User();
 				user.setUsername(userRequest.getUsername());
 				user.setFullName(userRequest.getFullName());
 				user.setEmail(userRequest.getEmail());
 				user.setPassword(userRequest.getPassword());
 				user.setRole(userService.getRoleByCode(userRequest.getRole()));
-				
+
 				userService.create(user);
 				model.addAttribute("success", "Username successfully created!");
 			}
@@ -68,10 +60,6 @@ public class UserController {
 			model.addAttribute("error", "Username or password is not valid!");
 		}
 
-		// Collection<Currency> currencyList = currencyService.getAll();
-		// model.addAttribute("currencyList", currencyList);
-
-		// return "redirect:/registration";
 		return getRegistration(model);
 	}
 

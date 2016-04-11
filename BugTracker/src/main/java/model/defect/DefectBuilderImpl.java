@@ -5,7 +5,6 @@ import java.util.Date;
 
 import model.comment.Comment;
 
-
 public class DefectBuilderImpl implements DefectBuilder {
 
 	int id;
@@ -16,15 +15,15 @@ public class DefectBuilderImpl implements DefectBuilder {
 	String assignedTo;
 	Status status;
 	Comment comment;
-	
-	public DefectBuilder id(int id){
+
+	public DefectBuilder id(int id) {
 		this.id = id;
 		return this;
-		
+
 	}
 
 	public DefectBuilder severity(String severity) {
-		if(severity != null){
+		if (severity != null) {
 			this.severity = Severity.valueOf(severity.toUpperCase());
 		}
 		return this;
@@ -51,7 +50,7 @@ public class DefectBuilderImpl implements DefectBuilder {
 	}
 
 	public DefectBuilder status(String status) {
-		if(status != null){
+		if (status != null) {
 			this.status = Status.valueOf(status.toUpperCase());
 		} else {
 			this.status = Status.NEW;
@@ -77,7 +76,6 @@ public class DefectBuilderImpl implements DefectBuilder {
 		defect.severity = this.severity;
 		defect.status = this.status;
 		defect.lastChangedDate = formatter.format(new Date());
-//		defect.comments.add(this.comment);
 
 		return defect;
 	}
@@ -85,7 +83,7 @@ public class DefectBuilderImpl implements DefectBuilder {
 	public Defect build(Defect olddefect) {
 		SimpleDateFormat formatter = new SimpleDateFormat("y-MM-d H:m");
 		DefectImpl newDefect = copyDefectData(olddefect);
-		
+
 		if (this.severity != null) {
 			newDefect.severity = this.severity;
 		}
@@ -136,37 +134,4 @@ public class DefectBuilderImpl implements DefectBuilder {
 
 	}
 
-	// builder to create a Defect from a DefectRequestData object
-	// public Defect build(DefectRequestData defectRequestData) {
-	//
-	// DefectImpl newDefect = new DefectImpl();
-	//
-	// Severity dataSeverity = (Severity) traverseEnum(Severity.values(),
-	// defectRequestData.getSeverity().toUpperCase());
-	// if (dataSeverity != null) {
-	// newDefect.severity = dataSeverity;
-	// }
-	//
-	// newDefect.title = defectRequestData.getTitle();
-	// newDefect.description = defectRequestData.getDescription();
-	// newDefect.author = defectRequestData.getAuthor();
-	// newDefect.dateCreated = new Date(defectRequestData.getDateCreated());
-	// newDefect.assignedTo = defectRequestData.getAssignedTo();
-	//
-	// Status dataStatus = (Status) traverseEnum(Status.values(),
-	// defectRequestData.getStatus());
-	// if(dataStatus != null){
-	// newDefect.status = dataStatus;
-	// }
-	// newDefect.lastChangedDate = new
-	// Date(defectRequestData.getLastChangedDate());
-	// newDefect.comments.add(new CommentImpl());
-	//// defectRequestData.getComments()
-	//// defect.comments.add(this.comment);
-	//
-	// return newDefect;
-	// }
-
-
 }
-
