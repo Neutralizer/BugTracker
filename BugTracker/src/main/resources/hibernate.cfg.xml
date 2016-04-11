@@ -17,6 +17,7 @@
 		<mapping class="model.user.Role"></mapping>
 
 		<!-- Cecoceco1 -->
+		
 
 <!-- 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dummydb</property> -->
 <!-- 		<property name="hibernate.connection.username">root</property> -->
