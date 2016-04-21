@@ -12,11 +12,11 @@ import dao.HibernateSessionManager;
 import model.user.Role;
 import model.user.User;
 
-public class UserDaoImpl implements UserDao{
-	
-	public void add(User user){
+public class UserDaoImpl implements UserDao {
+
+	public void add(User user) {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
-		try{
+		try {
 			session.beginTransaction();
 			session.save(user);
 			session.getTransaction().commit();
@@ -25,12 +25,12 @@ public class UserDaoImpl implements UserDao{
 		} finally {
 			session.close();
 		}
-		
+
 	}
-	
-	public void update(User user){
+
+	public void update(User user) {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
-		try{
+		try {
 			session.beginTransaction();
 			session.update(user);
 			session.getTransaction().commit();
@@ -40,10 +40,10 @@ public class UserDaoImpl implements UserDao{
 			session.close();
 		}
 	}
-	
-	public void delete(int id){
+
+	public void delete(int id) {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
-		try{
+		try {
 			session.beginTransaction();
 			User defect = session.get(User.class, id);
 			session.delete(defect);
@@ -54,10 +54,10 @@ public class UserDaoImpl implements UserDao{
 			session.close();
 		}
 	}
-	
+
 	public User getUser(int id) {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
-		try{
+		try {
 			session.beginTransaction();
 			User user = session.get(User.class, id);
 			session.getTransaction().commit();
@@ -72,9 +72,9 @@ public class UserDaoImpl implements UserDao{
 
 	public User findUserByUsername(String username) {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
-		try{
+		try {
 			session.beginTransaction();
-			User user = (User)session.createCriteria(User.class)
+			User user = (User) session.createCriteria(User.class)
 					.add(Restrictions.eq("username", username)).uniqueResult();
 			session.getTransaction().commit();
 			return user;
@@ -88,9 +88,10 @@ public class UserDaoImpl implements UserDao{
 
 	public Collection<Role> findRoles() {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
-		try{
+		try {
 			session.beginTransaction();
-			Collection<Role> roles = (Collection<Role>) session.createCriteria(Role.class).list();
+			Collection<Role> roles = (Collection<Role>) session.createCriteria(Role.class)
+					.list();
 			session.getTransaction().commit();
 			return roles;
 		} catch (HibernateException e) {
@@ -103,7 +104,7 @@ public class UserDaoImpl implements UserDao{
 
 	public Role findRoleByCode(String code) {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
-		try{
+		try {
 			session.beginTransaction();
 			Role role = (Role) session.createCriteria(Role.class)
 					.add(Restrictions.eq("code", code)).uniqueResult();
@@ -116,14 +117,5 @@ public class UserDaoImpl implements UserDao{
 		}
 		return null;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

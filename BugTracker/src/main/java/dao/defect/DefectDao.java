@@ -2,17 +2,16 @@ package dao.defect;
 
 import java.util.Collection;
 
+import dao.genericDao.GenericDao;
 import model.defect.Defect;
 
-public interface DefectDao {
+public interface DefectDao{
 
 	void addDefect(Defect defect);
 	
 	void update(Defect defect);
 	
 	Collection<Defect> findAllDefects();
-	
-//	Collection<Defect> findList();
 	
 	Defect findDefect(int id);
 	

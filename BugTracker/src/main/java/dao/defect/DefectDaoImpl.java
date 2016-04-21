@@ -58,7 +58,7 @@ public class DefectDaoImpl implements DefectDao {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			Collection<Defect> defects = session.createCriteria(DefectImpl.class).list();
+			Collection<Defect> defects = (Collection<Defect>)session.createCriteria(DefectImpl.class).list();
 			session.getTransaction().commit();
 			return defects;
 		} catch (HibernateException e) {
@@ -76,8 +76,6 @@ public class DefectDaoImpl implements DefectDao {
 			session.beginTransaction();
 			String hql = "select new list (id, title, severity, status) from DefectImpl";
 			Query query = session.createQuery(hql);
-//			query.setFirstResult(0);
-//			query.setMaxResults(100);
 			List<List> result = (List<List>) query.list();
 			Collection<Defect> coll = new ArrayList<Defect>();
 
@@ -85,10 +83,8 @@ public class DefectDaoImpl implements DefectDao {
 				Object obj = result.get(r);
 				List list = (List) obj;
 				Object[] arr = list.toArray();
-				Defect defect = getDefectBuilder()
-						.id((Integer) arr[0])
-						.title((String) arr[1])
-						.severity((String) arr[2].toString())
+				Defect defect = getDefectBuilder().id((Integer) arr[0])
+						.title((String) arr[1]).severity((String) arr[2].toString())
 						.status((String) arr[3].toString()).build();
 				coll.add(defect);
 
@@ -132,46 +128,36 @@ public class DefectDaoImpl implements DefectDao {
 		}
 		return null;
 	}
-	
-	public Collection<Defect> findAllLike(String key){
+
+	public Collection<Defect> findAllLike(String key) {
 		// defect is using builder, so no constructor for HQL to do its magic
-				Session session = HibernateSessionManager.getSessionFactory().openSession();
-				try {
-					session.beginTransaction();
-					String hql = "select new list (id, title, severity, status)"
-							+ " from DefectImpl where title like " + "\'" + key + "%\'";
-					List<List> result = (List<List>) session.createQuery(hql).list();
-					Collection<Defect> coll = new ArrayList<Defect>();
+		Session session = HibernateSessionManager.getSessionFactory().openSession();
+		try {
+			session.beginTransaction();
+			String hql = "select new list (id, title, severity, status)"
+					+ " from DefectImpl where title like " + "\'" + key + "%\'";
+			List<List> result = (List<List>) session.createQuery(hql).list();
+			Collection<Defect> coll = new ArrayList<Defect>();
 
-					for (int r = 0; r < result.size(); r++) {
-						Object obj = result.get(r);
-						List list = (List) obj;
-						Object[] arr = list.toArray();
-						Defect defect = getDefectBuilder()
-								.id((Integer) arr[0])
-								.title((String) arr[1])
-								.severity((String) arr[2].toString())
-								.status((String) arr[3].toString()).build();
-						coll.add(defect);
+			for (int r = 0; r < result.size(); r++) {
+				Object obj = result.get(r);
+				List list = (List) obj;
+				Object[] arr = list.toArray();
+				Defect defect = getDefectBuilder().id((Integer) arr[0])
+						.title((String) arr[1]).severity((String) arr[2].toString())
+						.status((String) arr[3].toString()).build();
+				coll.add(defect);
 
-					}
-					session.getTransaction().commit();
-					return coll;
-				} catch (HibernateException e) {
-					session.getTransaction().rollback();
-				} finally {
-					session.close();
-				}
-				return new ArrayList<Defect>();
-		
-		
+			}
+			session.getTransaction().commit();
+			return coll;
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
+		return new ArrayList<Defect>();
+
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }
