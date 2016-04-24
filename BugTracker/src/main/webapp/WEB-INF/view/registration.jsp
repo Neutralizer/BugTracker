@@ -30,7 +30,7 @@
 	border: 1px solid transparent;
 	border-radius: 4px;
 	color: #000000;
-	background-color: #A2DEB1;
+	background-color: #1ab188;
 	border-color: #ebccd1;
 }
 
@@ -66,6 +66,14 @@
         <div id="signup">   
           <h1>Sign Up for Free</h1>
           
+          	<c:if test="${not empty error}">
+				<div class="error">${error}</div>
+			</c:if>
+			
+			<c:if test="${not empty success}">
+				<div class="success">${success}</div>
+			</c:if>
+          
           <form name='registrationForm'
 			action="${pageContext.request.contextPath}/registration" method='POST'>
           
@@ -99,6 +107,18 @@
             <input type="password" name="password" required autocomplete="off"/>
           </div>
           
+          <div class="field-wrap" align="right">
+          
+           <label>
+              Select Position: <span class="req"></span>
+            </label>
+          		<select class="field-wrap" name="role">
+					<c:forEach items="${roleList}" var="r">
+						<option value="${r.code}">${r.role}</option>
+					</c:forEach>
+				</select>
+          </div>
+
           <button type="submit" class="button button-block">Get Started</button>
           
           <input type="hidden" name="${_csrf.parameterName}"
@@ -173,7 +193,7 @@
 <!-- 		</form> -->
 <!-- 	</div> -->
 	
-	<button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/login'">Login</button>
+<%-- 	<button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/login'">Login</button> --%>
 
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
