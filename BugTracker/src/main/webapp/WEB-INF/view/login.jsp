@@ -99,7 +99,6 @@
       
 
 		
-		
 	
 <%-- 	<button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/registration'">Register</button> --%>
 	   
