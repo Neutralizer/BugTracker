@@ -54,7 +54,10 @@
 		
 		
 		<div class="form">
-      
+		
+		<c:if test="${not empty dberror}">
+				<div class="error">${dberror}</div>
+		</c:if>
       
         
         <div id="login">   

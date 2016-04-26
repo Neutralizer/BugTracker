@@ -25,6 +25,11 @@ public class UserController {
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String getRegistration(Model model) {
 		Collection<Role> roleList = userService.getRoles();
+		
+		if(roleList.isEmpty()){
+			model.addAttribute("dberror", "Database connection error -"
+					+ " site is under maintenance");
+		}
 
 		model.addAttribute("roleList", roleList);
 

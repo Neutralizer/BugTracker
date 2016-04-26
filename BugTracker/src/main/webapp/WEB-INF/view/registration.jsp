@@ -59,6 +59,10 @@
 
 
 <div class="form">
+
+		<c:if test="${not empty dberror}">
+				<div class="error">${dberror}</div>
+		</c:if>
       
 <p class="forgot"><a href="${pageContext.request.contextPath}/login">Log in</a></p>
       
