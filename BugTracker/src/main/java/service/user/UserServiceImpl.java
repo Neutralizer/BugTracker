@@ -17,8 +17,11 @@ public class UserServiceImpl implements UserService {
 	UserDao userDao;
 	
 	public User getCurrentUser() {
-		// TODO Auto-generated method stub
-		return null;
+		org.springframework.security.core.userdetails.User userPrincipal = 
+				(org.springframework.security.core.userdetails.User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    String username = userPrincipal.getUsername();
+		User user = userDao.findUserByUsername(username);
+		return user;
 	}
 
 	public String getCurrentUserFullName() {
