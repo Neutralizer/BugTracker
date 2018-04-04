@@ -13,6 +13,7 @@ import model.defect.Defect;
 import model.defect.DefectBuilder;
 import model.defect.DefectBuilderImpl;
 import model.defect.DefectRequestData;
+import service.comment.CommentActionService;
 import service.user.UserService;
 
 /**
@@ -34,6 +35,9 @@ public class DefectActionServiceImpl implements DefectActionService {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	CommentActionService commentActionService;
+	
 	public Defect createDefect(DefectRequestData defectRequestData) {
 		String fullUserName = userService.getCurrentUserFullName();
 		
@@ -54,8 +58,10 @@ public class DefectActionServiceImpl implements DefectActionService {
 	public Defect edit(DefectRequestData defectRequestData, Defect defect) {
 		Comment comm = null;
 		if(!defectRequestData.getComment().equals("")){
-			comm = new CommentImpl(userService.getCurrentUserFullName(), 
+			comm = commentActionService.createComment(userService.getCurrentUserFullName(), 
 					defectRequestData.getComment());
+//			comm = new CommentImpl(, 
+//					defectRequestData.getComment());
 		}
 		
 		Defect newDefect = getDefectBuilder()

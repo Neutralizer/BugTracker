@@ -6,7 +6,7 @@ import model.comment.Comment;
 
 public interface CommentActionService {
 
-	Comment createComment(String text);
+	Comment createComment(String author, String text);
 
 	/**
 	 * edits the content of the selected comment

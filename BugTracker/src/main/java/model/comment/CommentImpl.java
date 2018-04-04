@@ -33,6 +33,7 @@ public class CommentImpl implements Comment {
 		// this.lastChangedDate = creationDate; must be changed to String
 	}
 
+	//editing the comment
 	public CommentImpl(Comment comment, String text) {
 		this.author = comment.getAuthor();
 		this.creationDate = comment.getCreationDate();

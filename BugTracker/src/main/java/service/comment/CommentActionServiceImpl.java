@@ -27,8 +27,8 @@ public class CommentActionServiceImpl implements CommentActionService {
 	
 	
 
-	public Comment createComment(String text) {
-		return null;
+	public Comment createComment(String author, String text) {
+		return new CommentImpl(author, text);
 	}
 
 	public Comment edit(String text, Comment comment) {
