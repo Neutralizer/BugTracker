@@ -12,6 +12,7 @@ public class LoadRoles {
 	
 	public static void main (String [] args) {
 		test1();
+		System.exit(0);
 	}
 
 	public static void test1() {
