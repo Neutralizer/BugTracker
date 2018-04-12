@@ -1,7 +1,5 @@
 package utils;
 
-import static org.junit.Assert.*;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -11,11 +9,11 @@ import model.user.Role;
 public class LoadRoles {
 	
 	public static void main (String [] args) {
-		test1();
+		util();
 		System.exit(0);
 	}
 
-	public static void test1() {
+	public static void util() {
 
 		Role role = new Role();
 		role.setCode("QA");
